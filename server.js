@@ -53,6 +53,8 @@ const storage = new GridFsStorage({
   },
 });
 
+const upload = multer({ storage });
+
 mongoose.connect(mongoURI, {
   useCreateIndex: true,
   useNewUrlParser: true,
@@ -61,6 +63,10 @@ mongoose.connect(mongoURI, {
 
 // api routes
 app.get("/", (req, res) => res.status(200).send("hello world"));
+
+app.post("/upload/image", upload.single("file"), (req, res) => {
+  res.status(201).send(req.file);
+});
 
 // listen
 app.listen(port, () => console.log(`listening on localhost:${port}`));
