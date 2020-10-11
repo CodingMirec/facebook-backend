@@ -22,7 +22,7 @@ app.use(cors());
 const mongoURI =
   "mongodb+srv://fb-client:LbNIyhO69dK8TXqI@cluster0.sjl03.mongodb.net/facebook-db?retryWrites=true&w=majority";
 
-const con = mongoose.createConnection(mongoURI, {
+const conn = mongoose.createConnection(mongoURI, {
   useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true,
